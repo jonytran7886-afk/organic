@@ -1,0 +1,6 @@
+{
+  "name": "Organic Việt Nam",
+  "description": "Định hướng sản phẩm thảo dược, nguồn nguyên liệu, quy trình chăm sóc và sản xuất, chất lượng và truy xuất nguồn gốc.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

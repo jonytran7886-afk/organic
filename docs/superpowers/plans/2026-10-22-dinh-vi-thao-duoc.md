@@ -42,3 +42,7 @@
 Chỉnh trực tiếp source theo yêu cầu người dùng; tiếp tục triển khai trong phiên này. Không tự commit, publish hay thay kiến trúc. Chỉ thay nội dung và sửa liên kết dự phòng bị in nguyên template nếu gặp trong phạm vi kiểm tra.
 
 Đã tái hiện và sửa lỗi xóa từ khóa từ URL khi đặt lại bộ lọc; đã kiểm tra lại trên Chrome. CSS, logo OV, các ID/anchor và tên file HTML giữ nguyên.
+
+## Tích hợp Git sau khi người dùng yêu cầu push
+
+Remote đã chuyển sang React/TypeScript tại `38aac0a`. Nội dung của bản tĩnh được lưu ở `0a677e0`, sao lưu đầy đủ và chuyển sang 10 page component. Dữ liệu được đối chiếu khớp hoàn toàn. Giữ router/CSS/cấu hình triển khai từ remote, cập nhật script kiểm tra cho React; build, TypeScript và kiểm tra Chrome đã đạt. Người dùng đã cho phép push tới repository công khai và nhánh main.

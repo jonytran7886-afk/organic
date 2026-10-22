@@ -2,54 +2,65 @@
 
 Ngày thực hiện: 22/10/2026.
 
-Đã cập nhật trực tiếp source hiện có theo định vị **SẢN PHẨM THẢO DƯỢC**. Tên thương hiệu và pháp nhân ORGANIC VIỆT NAM được giữ nguyên. Không gán thành phần thảo dược, công dụng sức khỏe hay chứng nhận cho sản phẩm chưa có căn cứ.
+Định vị chính thức: **SẢN PHẨM THẢO DƯỢC**. Giữ nguyên tên thương hiệu, pháp nhân ORGANIC VIỆT NAM và logo OV. Không gán thành phần thảo dược, công dụng sức khỏe hay chứng nhận cho dòng sản phẩm chưa có căn cứ.
 
-## Danh sách file và nội dung thay đổi
+## Tích hợp phiên bản mới trên Git
 
-Toàn bộ 10 trang HTML được đồng bộ thanh thông báo, mô tả thương hiệu ở header/footer, thông điệp hợp tác, danh mục và SEO description riêng cho từng trang. Menu và đích liên kết được giữ nguyên.
+Bản chỉnh sửa website tĩnh đã được lưu trong commit `0a677e0`. Khi push, phát hiện remote có 3 commit mới đến `38aac0a`, gồm chuyển sang React/TypeScript/Vite và cấu hình Wrangler. Đã tích hợp lịch sử remote và chuyển toàn bộ nội dung được duyệt sang phiên bản React đang có; không khôi phục kiến trúc tĩnh cũ hoặc ghi đè công việc từ xa.
 
-| File | Nội dung cụ thể |
+Dữ liệu 8 sản phẩm và 4 bài viết trong `src/data.ts` đã được đối chiếu, khớp hoàn toàn với bản cập nhật đã duyệt. Router, CSS, package.json, Vite và Wrangler của remote được giữ nguyên. Các file tĩnh mà remote đã loại bỏ tiếp tục được thay bằng component React tương ứng. Bản tĩnh vẫn có đầy đủ trong lịch sử commit `0a677e0`.
+
+## File và nội dung thay đổi trong phiên bản React
+
+| File | Thay đổi |
 | --- | --- |
-| `index.html` | Hero “Thảo dược Việt, vun đắp giá trị”; title SEO mới; câu chuyện, trụ cột, hành trình nguyên liệu, danh mục, sản phẩm nổi bật và giới thiệu bài viết theo hướng thảo dược. Sản phẩm nổi bật ưu tiên nguyên liệu và dòng đang nghiên cứu, có trạng thái xác minh. |
-| `san-pham.html` | Giải thích định vị và giới hạn xác minh; chuẩn hóa tên nhóm, sản phẩm, placeholder tìm kiếm và HTML dự phòng; thay ảnh bao bì bằng ảnh cây/nguyên liệu trung tính. |
-| `chi-tiet-san-pham.html` | Phần giới thiệu nêu rõ thông tin từng dòng cần xác minh. Chi tiết động bổ sung trạng thái nguyên liệu/quy trình từ dữ liệu dùng chung. |
-| `ve-chung-toi.html` | Cập nhật câu chuyện, tầm nhìn, sứ mệnh và các trụ cột theo nguồn nguyên liệu, nghiên cứu sản phẩm, chất lượng, truy xuất. Giữ nguyên tên pháp nhân, MST và địa chỉ. |
-| `trang-trai.html` | Định hướng khảo sát vùng nguyên liệu thảo dược, chăm sóc/thu hoạch theo lô; chăn nuôi chỉ đề cập ứng dụng khi có tài liệu tương ứng. Bỏ số liệu diện tích chưa xác minh; giữ lưu ý pháp lý và ảnh minh họa. |
-| `chat-luong.html` | Nguồn thảo dược, hồ sơ chăm sóc và sản xuất theo lô; phân biệt định vị sản phẩm với bằng chứng chứng nhận. Giữ anchor `#truy-xuat`, `#chung-nhan`. |
-| `tin-tuc.html` | Giới thiệu kiến thức về nguyên liệu thảo dược, chăm sóc/sản xuất và truy xuất. |
-| `bai-viet.html` | Giới thiệu nội dung tham khảo về thảo dược; giữ URL và ID bài viết. |
-| `lien-he.html` | Nội dung hợp tác về thảo dược, vùng nguyên liệu và sản xuất/phân phối. Giữ biểu mẫu bản nháp cục bộ. |
-| `quan-tam.html` | Thay ảnh bao bì cũ bằng ảnh cây trung tính; sửa template nút “Khám phá sản phẩm” từng bị in nguyên văn thành liên kết thật. |
-| `assets/data.js` | Chuẩn hóa 8 sản phẩm và 4 bài viết; thêm thông tin cần xác minh theo từng dòng. Thịt, trứng, gia cầm, rau củ và giỏ thực phẩm giữ tên trung tính. Hai dòng thảo dược chỉ ở trạng thái nghiên cứu. Giữ nguyên toàn bộ ID và mã danh mục. |
-| `assets/app.js` | Thẻ sản phẩm hiển thị đúng trạng thái nghiên cứu; chi tiết hiển thị thông tin cần xác minh; SEO description động theo sản phẩm/bài viết. Sửa lỗi sẵn có: sau khi mở danh mục bằng `?q=...`, xóa ô tìm kiếm hoặc “Hiện tất cả” phải bỏ từ khóa cũ. |
-| `README.md` | Ghi định vị mới, giới hạn dữ liệu/ảnh, hướng dẫn kiểm tra và liên kết báo cáo. |
-| `scripts/verify-source.py` | Kiểm tra định vị, metadata, liên kết/anchor, tài nguyên, ID và dữ liệu HTML dự phòng. |
-| `scripts/verify-browser.mjs` | Kiểm tra trên Chrome local: desktop/mobile, ảnh, lỗi JavaScript và các tương tác đang có. |
-| `docs/superpowers/plans/2026-10-22-dinh-vi-thao-duoc.md` | Kế hoạch và trạng thái thực hiện. |
+| `src/components/Header.tsx` | Thanh thông báo và mô tả thương hiệu theo định vị sản phẩm thảo dược; giữ menu và tìm kiếm. |
+| `src/components/Footer.tsx` | Mô tả thương hiệu, danh mục, thông điệp hợp tác; giữ pháp nhân, MST, địa chỉ và liên kết. |
+| `src/components/ProductCard.tsx` | Hiển thị trạng thái nghiên cứu/định hướng theo đúng dữ liệu từng sản phẩm. |
+| `src/data.ts` | Chuẩn hóa 8 sản phẩm và 4 bài viết; thêm yêu cầu xác minh từng dòng. Thịt, trứng, gia cầm và rau củ giữ tên trung tính. Hai dòng thảo dược ở trạng thái nghiên cứu. Giữ toàn bộ ID và mã danh mục. |
+| `src/types.ts` | Bổ sung trường `verification` cho thông tin cần xác minh của sản phẩm. |
+| `src/pages/HomePage.tsx` | Hero “Thảo dược Việt, vun đắp giá trị”; câu chuyện, danh mục, trụ cột, hành trình nguyên liệu, sản phẩm nổi bật và bài viết được đồng bộ. |
+| `src/pages/ProductsPage.tsx` | Giải thích định vị và giới hạn xác minh; đổi tên danh mục/placeholder; thay ảnh bao bì bằng ảnh cây trung tính. Giữ logic bộ lọc và đặt lại của phiên bản React. |
+| `src/pages/ProductDetailPage.tsx` | Định hướng nguyên liệu/quy trình và lưu ý xác minh riêng cho từng dòng; giữ lưu quan tâm và liên hệ. |
+| `src/pages/AboutPage.tsx` | Câu chuyện, tầm nhìn, sứ mệnh và trụ cột theo thảo dược, chất lượng và truy xuất. |
+| `src/pages/FarmPage.tsx` | Định hướng khảo sát nguyên liệu thảo dược và chăm sóc/thu hoạch theo lô; bỏ số liệu diện tích chưa xác minh, giữ lưu ý pháp lý. |
+| `src/pages/QualityPage.tsx` | Nguồn thảo dược, hồ sơ chăm sóc/sản xuất theo lô; phân biệt định vị với bằng chứng chứng nhận, giữ anchor truy xuất và chứng nhận. |
+| `src/pages/NewsPage.tsx` | Giới thiệu kiến thức thảo dược, nguyên liệu, sản xuất và nguồn gốc. |
+| `src/pages/ArticleDetailPage.tsx` | Nội dung tham khảo và metadata theo bài viết đang xem. |
+| `src/pages/SavedPage.tsx` | Thay ảnh bao bì cũ bằng ảnh cây; giữ quản lý danh sách quan tâm. |
+| `src/pages/ContactPage.tsx` | Thông điệp hợp tác về thảo dược, vùng nguyên liệu và sản xuất/phân phối; giữ bản nháp cục bộ. |
+| `index.html`, `metadata.json` | SEO và mô tả mặc định theo định vị mới. Cả 10 page component cập nhật title, description và Open Graph khi chuyển trang. |
+| `README.md` | Hướng dẫn chạy React, định vị mới, giới hạn dữ liệu và kiểm tra. |
+| `.gitignore` | Loại dependencies, build output và thư mục chạy Wrangler khỏi source Git. |
+| `scripts/verify-source.py` | Kiểm tra định vị, tài nguyên, metadata, ID, route và URL .html cũ. |
+| `scripts/verify-browser.mjs` | Kiểm tra Chrome local ở cổng 3000, tương thích React và các luồng tương tác hiện có. |
+| `docs/superpowers/plans/2026-10-22-dinh-vi-thao-duoc.md` | Kế hoạch, trạng thái và ghi nhận tích hợp remote. |
 | `docs/BAO-CAO-DINH-VI-THAO-DUOC.md` | Báo cáo bàn giao này. |
 
-## Rà soát hình ảnh
+## Hình ảnh
 
-Đã xem toàn bộ bộ ảnh gốc và kiểm tra các ảnh có chữ/bao bì ở kích thước đầy đủ. Không dùng OCR làm bằng chứng kiểm tra.
+Đã xem toàn bộ ảnh gốc, kiểm tra ảnh có chữ/bao bì ở kích thước đầy đủ. Không dùng OCR làm bằng chứng.
 
-- Loại `assets/images/hero-products.webp` và `assets/images/products-close.webp`: chứa tên sản phẩm mang định vị cũ và biểu tượng trên bao bì chưa được xác minh. Các vị trí sử dụng được thay bằng `herbs.webp` hoặc `vegetables.webp` sẵn có; sản phẩm giỏ thực phẩm trong dữ liệu động cũng đã đổi ảnh.
-- Loại `assets/images/store.webp`: ảnh chưa được tham chiếu nhưng chứa phối cảnh cửa hàng với các hình bao bì cũ.
-- Giữ nguyên `assets/images/ov-mark.png`. Các ảnh còn lại tiếp tục là hình minh họa, không phải bằng chứng về trang trại, cơ sở sản xuất, nguyên liệu hay sản phẩm thực tế. Trạng thái minh họa và yêu cầu ảnh thực được nêu trên website.
+- Loại `hero-products.webp`, `products-close.webp`, `store.webp` khỏi cả `assets/images/` và `public/assets/images/` vì chứa bao bì/thông điệp cũ hoặc biểu tượng chưa được xác minh.
+- Các vị trí dùng ảnh bao bì đã đổi sang `herbs.webp` hoặc `vegetables.webp` sẵn có. Không thêm ảnh giả về sản phẩm thực tế.
+- Logo OV giữ nguyên byte so với remote. Các ảnh còn lại đều là minh họa; website nêu trạng thái và yêu cầu ảnh thật. Không dùng hình để khẳng định năng lực trang trại, thành phần hay chứng nhận.
 
-## Kết quả kiểm tra
+## Kiểm tra phiên bản React tích hợp
 
-- `python3 scripts/verify-source.py`: đạt; 10 trang, 8 sản phẩm, 4 bài viết, 500 tham chiếu nội bộ hợp lệ. Kiểm tra cả nội dung ẩn, HTML dự phòng, metadata, ảnh, mã sản phẩm/bài viết và anchor.
-- `node --check assets/data.js`, `node --check assets/app.js`, `node --check scripts/verify-browser.mjs`: đạt.
-- `git diff --check`: đạt.
-- Quét toàn bộ HTML và JavaScript hiển thị: không còn từ mô tả định vị cũ; mọi lần xuất hiện “Organic” đều thuộc tên ORGANIC VIỆT NAM. Các trụ cột trước đây dùng tên tiếng Anh đã đổi thành tên mô tả tiếng Việt để tránh nhầm đặc tính sản phẩm.
-- Đối chiếu với HEAD ban đầu: giữ nguyên 10 tên file HTML, tập ID/anchor của từng trang, CSS và toàn bộ byte của logo OV. Các URL tham số sản phẩm/bài viết vẫn sử dụng ID cũ.
+- `python3 scripts/verify-source.py`: đạt; 10 page component, 8 sản phẩm, 4 bài viết, 35 tham chiếu ảnh trực tiếp, route/alias .html, anchor, metadata và định vị hợp lệ.
+- `npm run lint`: TypeScript đạt.
+- `npm run build`: TypeScript và Vite production build đạt.
+- `node --check scripts/verify-browser.mjs`, `git diff --check`: đạt.
+- Quét HTML, TypeScript/TSX, metadata: không còn nội dung mô tả định vị cũ; “Organic” chỉ thuộc tên ORGANIC VIỆT NAM.
+- Đối chiếu remote: router, CSS, package.json, Vite và Wrangler không thay đổi; logo giữ nguyên byte.
 - Chrome headless: 10 trang × 4 chiều rộng **1440, 768, 390, 320 px**, không tràn ngang, không ảnh lỗi, không lỗi JavaScript trong các lượt kiểm tra.
-- Kiểm tra thêm cả 8 sản phẩm và 4 bài viết ở **1440 và 390 px**; nội dung và metadata đúng mục đang xem, không tràn ngang.
-- Menu mobile mở/đóng và trạng thái truy cập; các nhóm lọc qua URL và nút; tìm kiếm từ header; tìm kiếm trực tiếp, trạng thái không có kết quả và đặt lại bộ lọc: đạt.
-- Lưu/bỏ sản phẩm, giữ danh sách khi chuyển trang, xóa danh sách, liên kết liên hệ từ sản phẩm và điền trước thông tin: đạt.
-- Biểu mẫu liên hệ lưu bản nháp vào trình duyệt và thông báo rõ chưa gửi đến doanh nghiệp: đạt.
+- Cả 10 URL `.html` cũ tiếp tục mở đúng trang React.
+- Từng sản phẩm và bài viết được kiểm tra ở **1440 và 390 px**: 16 lượt sản phẩm, 8 lượt bài viết; nội dung/metadata đúng mục đang xem và không tràn ngang.
+- Menu mobile mở/đóng; lọc qua URL và nút; tìm kiếm từ header và trực tiếp; kết quả rỗng, đặt lại và xóa từ khóa: đạt.
+- Lưu/bỏ sản phẩm, giữ danh sách qua chuyển trang, xóa danh sách, liên hệ từ sản phẩm và điền trước nội dung: đạt.
+- Biểu mẫu liên hệ chỉ lưu bản nháp vào trình duyệt, hiển thị rõ chưa gửi tới doanh nghiệp: đạt.
 
-Ảnh chụp 10 trang ở desktop/mobile và kết quả JSON được lưu trong `/private/tmp/ov-review/` của phiên kiểm tra. Đây là kiểm tra Chrome headless; chưa kiểm thử trực tiếp trên thiết bị iOS/Android hoặc Safari/Firefox.
+Ảnh chụp và kết quả JSON được lưu ở `/private/tmp/ov-review/` trong phiên kiểm tra. Chưa kiểm thử trực tiếp trên thiết bị iOS/Android hoặc Safari/Firefox. Không triển khai dịch vụ bằng công cụ deploy; thao tác bàn giao là commit và push Git theo yêu cầu người dùng.
 
 ## Thông tin doanh nghiệp cần xác minh
 
@@ -65,4 +76,4 @@ Toàn bộ 10 trang HTML được đồng bộ thanh thông báo, mô tả thư�
 | Pháp nhân và liên hệ | Đối chiếu tên pháp nhân, MST, địa chỉ với hồ sơ; bổ sung điện thoại/email chính thức và đơn vị tiếp nhận yêu cầu. |
 | Hệ thống truy xuất | Dữ liệu lô, đơn vị chịu trách nhiệm và tình trạng vận hành trước khi công bố QR/hệ thống tra cứu thật. |
 
-Không thêm công dụng chữa bệnh, thông số chất lượng hoặc lợi ích sức khỏe chưa được xác minh. Không triển khai tính năng mới, không kết nối biểu mẫu với server và không publish website trong lần cập nhật này.
+Không thêm công dụng chữa bệnh, thông số chất lượng hoặc lợi ích sức khỏe chưa được xác minh. Không thêm tính năng hoặc kết nối biểu mẫu với server.

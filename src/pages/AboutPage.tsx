@@ -41,7 +41,7 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
           <div className="subhero-picture">
-            <img src="/assets/images/community.webp" alt="Hình minh họa cộng đồng và vùng nguyên liệu" loading="lazy" />
+            <img src="/assets/images/community-hero.jpg" alt="Hình minh họa gia đình tìm hiểu cây thảo dược tại vùng nguyên liệu" loading="lazy" />
           </div>
         </div>
       </section>

@@ -2,6 +2,8 @@
 
 Website tĩnh, nhiều trang, giao diện tiếng Việt, không cần cài dependencies.
 
+Định vị chính thức: **SẢN PHẨM THẢO DƯỢC**. Giữ nguyên thương hiệu và pháp nhân **ORGANIC VIỆT NAM**; tên thương hiệu không mô tả đặc tính hay chứng nhận sản phẩm. Nội dung tập trung vào nguồn nguyên liệu, quy trình chăm sóc/sản xuất, chất lượng và truy xuất. Các nhóm thịt, trứng, gia cầm giữ tên trung tính khi chưa có hồ sơ ứng dụng thảo dược.
+
 ## Chạy website
 
 Cách 1: Mở `index.html` bằng trình duyệt. Các liên kết HTML hoạt động trực tiếp; dữ liệu tìm kiếm và danh sách quan tâm lưu trên trình duyệt (có thể bị hạn chế ở một số trình duyệt khi chạy `file://`).
@@ -41,9 +43,9 @@ Truy cập `http://localhost:8080`.
 
 ## Cần thay trước khi phát hành chính thức
 
-- Hình ảnh hiện lấy từ bộ ảnh thiết kế mô phỏng, không phải bằng chứng năng lực/trang trại hiện hữu. Hãy thay bằng ảnh thực tế có quyền sử dụng.
-- Sản phẩm trong danh mục là **định hướng**; chưa tích hợp giá, tồn kho hay thanh toán.
-- Không thể hiện chứng nhận HACCP/ISO/VietGAP/hữu cơ, đối tác hay số liệu thành tích vì chưa có tài liệu xác minh.
+- Hình ảnh hiện lấy từ bộ ảnh thiết kế mô phỏng, không phải bằng chứng năng lực/trang trại hiện hữu. Các ảnh bao bì mang định vị cũ đã được loại khỏi source, dùng ảnh nguyên liệu trung tính ở vị trí liên quan. Hãy thay bằng ảnh thực tế có quyền sử dụng.
+- Sản phẩm trong danh mục là **định hướng**; chưa tích hợp giá, tồn kho hay thanh toán. Thành phần, loại thảo dược, nguồn nguyên liệu và quy trình cho từng sản phẩm cần hồ sơ xác minh.
+- Không công bố chứng nhận, công dụng sức khỏe, đối tác hay số liệu thành tích khi chưa có tài liệu xác minh.
 - Tên pháp nhân, MST, địa chỉ đã điền theo thông tin người dùng cung cấp nhưng vẫn cần đối chiếu hồ sơ chính thức.
 - Thiếu email, website chính thức, điện thoại, nên chưa có endpoint liên hệ.
 - Mã QR hiện không sử dụng; tích hợp dữ liệu truy xuất thật và QR chỉ sau khi hệ thống vận hành.
@@ -71,3 +73,15 @@ organic_viet_nam_website/
 ```
 
 © Prototype phục vụ rà soát và phát triển, không phải website thương mại đã vận hành.
+
+## Kiểm tra sau cập nhật
+
+```bash
+python3 scripts/verify-source.py
+node --check assets/data.js
+node --check assets/app.js
+```
+
+Kiểm tra trình duyệt: chạy máy chủ tại `http://127.0.0.1:8080`, mở Chrome bằng hồ sơ tạm với remote debugging cổng `9222`, rồi chạy `node scripts/verify-browser.mjs`. Script dùng Chrome DevTools Protocol, không cần cài thư viện; chỉ chạy trên website local. Kết quả và ảnh kiểm tra được lưu ở `/private/tmp/ov-review/`.
+
+Báo cáo thay đổi và thông tin cần doanh nghiệp xác minh: [docs/BAO-CAO-DINH-VI-THAO-DUOC.md](docs/BAO-CAO-DINH-VI-THAO-DUOC.md).

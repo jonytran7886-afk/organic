@@ -35,11 +35,11 @@ export const HomePage: React.FC = () => {
           <div className="hero-copy">
             <span className="eyebrow pill">SẢN PHẨM THẢO DƯỢC</span>
             <h1>
-              Thảo dược Việt,<br />
-              <em>vun đắp giá trị.</em>
+              <span className="hero-title-line">Nâng tầm giá trị</span>
+              <em className="hero-title-line">thảo dược Việt</em>
             </h1>
             <p>
-              Organic Việt Nam định hướng phát triển sản phẩm thảo dược, chú trọng nguồn nguyên liệu, quy trình chăm sóc và sản xuất, chất lượng và truy xuất nguồn gốc.
+              Organic Việt Nam định hướng phát triển sản phẩm từ nguồn nguyên liệu thảo dược, chú trọng quy trình sản xuất, kiểm soát chất lượng và minh bạch nguồn gốc.
             </p>
             <div className="hero-buttons">
               <Link className="btn btn-primary" to="/san-pham">

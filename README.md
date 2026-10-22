@@ -1,73 +1,51 @@
-# Organic Việt Nam — Website HTML Prototype
+# Organic Việt Nam — React Web Application
 
-Website tĩnh, nhiều trang, giao diện tiếng Việt, không cần cài dependencies.
+Hệ sinh thái nông nghiệp, thực phẩm, thương mại và công nghệ với chuỗi giá trị minh bạch và bền vững.
+Ứng dụng được viết lại hoàn toàn bằng **React 18 + TypeScript + Vite + React Router**, giữ nguyên 100% logic nghiệp vụ, giao diện thẩm mỹ và trải nghiệm người dùng.
 
-## Chạy website
+## Tính năng
 
-Cách 1: Mở `index.html` bằng trình duyệt. Các liên kết HTML hoạt động trực tiếp; dữ liệu tìm kiếm và danh sách quan tâm lưu trên trình duyệt (có thể bị hạn chế ở một số trình duyệt khi chạy `file://`).
+- **Trang chủ (`/`)**: Giới thiệu hệ sinh thái, 4 danh mục định hướng, 4 trụ cột (Farm, Foods, Market, Digital), quy trình 6 bước, sản phẩm nổi bật, kiểm soát chất lượng, định hướng Khe Xai, góc kiến thức và kết nối.
+- **Danh mục sản phẩm (`/san-pham`)**: Lọc theo danh mục (Tất cả, Trứng & gia cầm, Thịt & thực phẩm, Thảo mộc & nông sản, Giá trị gia tăng), tìm kiếm theo từ khóa trực tiếp, hiển thị số lượng và trạng thái rỗng.
+- **Chi tiết sản phẩm (`/chi-tiet-san-pham?id=...`)**: Xem đầy đủ tiêu chí sản phẩm, mục tiêu hướng tới, đối tượng phục vụ, nút lưu quan tâm và liên kết trao đổi sản phẩm tự động điền nội dung.
+- **Về chúng tôi (`/ve-chung-toi`)**: Câu chuyện doanh nghiệp, thông tin pháp lý (MST: 3002272477), tầm nhìn, sứ mệnh, 4 giá trị cốt lõi và 4 trụ cột.
+- **Trang trại Khe Xai (`/trang-trai`)**: Khảo sát nguồn lực, quy hoạch chăn nuôi, vùng nguyên liệu, kinh tế tuần hoàn và thư viện hình ảnh minh họa.
+- **Chất lượng & Truy xuất (`/chat-luong`)**: 4 lớp kiểm soát chất lượng theo công đoạn, mô hình Organic Digital (dữ liệu truy xuất nguồn gốc), thông báo minh bạch chứng nhận và tiêu chuẩn.
+- **Kiến thức & Bài viết (`/tin-tuc`, `/bai-viet?id=...`)**: Đọc các bài viết chuyên môn về minh bạch nguồn gốc, mã QR, kinh tế tuần hoàn và cách chọn thực phẩm.
+- **Danh sách quan tâm (`/quan-tam`)**: Quản lý các sản phẩm đã lưu trong `localStorage` (`ov_interests`), đồng bộ huy hiệu số lượng trên header và nút xóa danh sách.
+- **Liên hệ & Trao đổi (`/lien-he`)**: Biểu mẫu lưu nháp liên hệ trên trình duyệt (`ov_contact_drafts`), tự động điền chủ đề và sản phẩm từ liên kết, thông báo phản hồi trực quan.
+- **Điều hướng & Tương thích**: Hỗ trợ cả URL chuẩn (`/san-pham`, `/chi-tiet-san-pham`, ...) lẫn URL `.html` cũ (`/san-pham.html`, `/chi-tiet-san-pham.html`, ...) đảm bảo liên kết không bị gián đoạn.
 
-Cách 2 (khuyến nghị): mở Terminal tại thư mục này và chạy:
+## Cấu trúc thư mục
+
+```
+/
+├── public/
+│   └── assets/images/      # Hình ảnh và biểu trưng
+├── src/
+│   ├── components/         # Header, Footer, ProductCard, Toast, Icons
+│   ├── context/            # SavedContext quản trị danh sách quan tâm & thông báo toast
+│   ├── pages/              # Tất cả trang: Home, Products, Detail, About, Farm, Quality, News, Article, Saved, Contact
+│   ├── data.ts             # Dữ liệu sản phẩm & bài viết
+│   ├── types.ts            # TypeScript interfaces
+│   ├── styles.css          # CSS thiết kế giao diện gốc
+│   ├── App.tsx             # Định tuyến React Router
+│   └── main.tsx            # Điểm gắn kết React
+├── index.html              # HTML entry point với typography Be Vietnam Pro & SEO metadata
+├── package.json            # Cấu hình scripts & dependencies
+├── tsconfig.json           # Cấu hình TypeScript
+└── vite.config.ts          # Cấu hình Vite dev server (host: 0.0.0.0, port: 3000)
+```
+
+## Chạy ứng dụng
 
 ```bash
-python -m http.server 8080
+npm install
+npm run dev
 ```
 
-Truy cập `http://localhost:8080`.
-
-## Các trang có trong bộ source
-
-- `index.html`: Trang chủ nhiều section
-- `san-pham.html`: Danh mục sản phẩm với lọc theo nhóm, tìm kiếm
-- `chi-tiet-san-pham.html?id=trung-ga`: Trang chi tiết sản phẩm (ID lấy từ `assets/data.js`)
-- `ve-chung-toi.html`: Giới thiệu doanh nghiệp, tầm nhìn, sứ mệnh
-- `trang-trai.html`: Định hướng trang trại Khe Xai
-- `chat-luong.html`: Quy trình quản lý chất lượng và truy xuất (có anchor `#truy-xuat`, `#chung-nhan`)
-- `tin-tuc.html`: Danh sách bài viết chia sẻ kiến thức
-- `bai-viet.html?id=truy-xuat-nguon-goc`: Trang chi tiết bài viết
-- `lien-he.html`: Thông tin liên hệ và form demo
-- `quan-tam.html`: Danh sách sản phẩm đã quan tâm
-
-**Tất cả menu chính trên header và footer có liên kết thực tế trong bộ source.**
-
-## Hoạt động
-
-- Responsive desktop/tablet/mobile và menu mobile mở/đóng.
-- Header tìm sản phẩm (dẫn đến `san-pham.html?q=...`).
-- Bộ lọc sản phẩm theo danh mục, tìm kiếm trực tiếp.
-- Click thẻ sản phẩm để xem chi tiết, chuyển đến trang liên hệ theo sản phẩm.
-- Lưu/bỏ lưu danh sách sản phẩm quan tâm bằng `localStorage` (không phải đặt hàng).
-- Form liên hệ kiểm tra dữ liệu và **chỉ lưu bản nháp trong trình duyệt**, KHÔNG gửi đến server.
-- Bài viết có trang chi tiết riêng, liên kết điều hướng.
-
-## Cần thay trước khi phát hành chính thức
-
-- Hình ảnh hiện lấy từ bộ ảnh thiết kế mô phỏng, không phải bằng chứng năng lực/trang trại hiện hữu. Hãy thay bằng ảnh thực tế có quyền sử dụng.
-- Sản phẩm trong danh mục là **định hướng**; chưa tích hợp giá, tồn kho hay thanh toán.
-- Không thể hiện chứng nhận HACCP/ISO/VietGAP/hữu cơ, đối tác hay số liệu thành tích vì chưa có tài liệu xác minh.
-- Tên pháp nhân, MST, địa chỉ đã điền theo thông tin người dùng cung cấp nhưng vẫn cần đối chiếu hồ sơ chính thức.
-- Thiếu email, website chính thức, điện thoại, nên chưa có endpoint liên hệ.
-- Mã QR hiện không sử dụng; tích hợp dữ liệu truy xuất thật và QR chỉ sau khi hệ thống vận hành.
-- Khi sẵn sàng triển khai, kết nối API/CRM để gửi liên hệ; bổ sung CMS và dữ liệu sản phẩm thực.
-
-## Cấu trúc
-
+Dev server chạy trên `http://0.0.0.0:3000`.
+Build sản phẩm:
+```bash
+npm run build
 ```
-organic_viet_nam_website/
-  index.html
-  san-pham.html
-  chi-tiet-san-pham.html
-  ve-chung-toi.html
-  trang-trai.html
-  chat-luong.html
-  tin-tuc.html
-  bai-viet.html
-  lien-he.html
-  quan-tam.html
-  assets/
-    app.js
-    data.js
-    styles.css
-    images/*.webp, ov-mark.png
-```
-
-© Prototype phục vụ rà soát và phát triển, không phải website thương mại đã vận hành.

@@ -1,0 +1,6 @@
+{
+  "name": "Organic Việt Nam",
+  "description": "Hệ sinh thái nông nghiệp, thực phẩm, thương mại và công nghệ với chuỗi giá trị minh bạch và bền vững.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
